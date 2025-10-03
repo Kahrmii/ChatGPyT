@@ -1,0 +1,239 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi", "hello", "hey", "yo", "what's up", "good morning", "good evening", "greetings", "how's it going", "peace", "hey there"
+      ],
+      "responses": [
+        "Hey! How are you?",
+        "Hello! What's new?",
+        "Hey! Want to chat?",
+        "Hi! How's your day going?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "see you", "later", "goodbye", "take care", "catch you later", "good night", "see you soon", "farewell"
+      ],
+      "responses": [
+        "Bye! Take care.",
+        "See you later 👋",
+        "Goodbye! Reach out if you want.",
+        "Take care!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks", "thank you", "thx", "much appreciated", "cheers", "many thanks", "thanks a lot", "thanks for your help"
+      ],
+      "responses": [
+        "You're welcome! 😊",
+        "Anytime.",
+        "No problem.",
+        "Glad to help."
+      ]
+    },
+    {
+      "tag": "smalltalk_mood",
+      "patterns": [
+        "how are you", "how's it going", "how do you feel", "what's up", "everything okay", "how's life", "how are things"
+      ],
+      "responses": [
+        "I'm good—ready to chat! And you?",
+        "All good here. How are you feeling?",
+        "Pretty good 🙂 What's up with you?",
+        "Ready to talk. How's your mood?"
+      ]
+    },
+    {
+      "tag": "mood_good",
+      "patterns": [
+        "I'm good", "great", "awesome", "fantastic", "top", "all good", "doing well", "pretty good", "fine", "excellent"
+      ],
+      "responses": [
+        "Nice! What was the highlight?",
+        "Sounds great—tell me more!",
+        "Glad to hear. What's next?"
+      ]
+    },
+    {
+      "tag": "mood_bad",
+      "patterns": [
+        "I'm not good", "bad", "sad", "down", "not so good", "feeling low", "tired", "no energy", "rough day"
+      ],
+      "responses": [
+        "Oh, that sounds tough. Want to talk about it?",
+        "Sorry to hear that. What would help right now?",
+        "I'm here—what's on your mind?"
+      ]
+    },
+    {
+      "tag": "filler",
+      "patterns": [
+        "lol", "haha", "hmm", "uh", "idk", "okayyy", "hmm...", "uff"
+      ],
+      "responses": [
+        "Hehe 😄—what are you thinking about?",
+        "🙂 What do you mean exactly?",
+        "I'm here—go on!"
+      ]
+    },
+    {
+      "tag": "clarify",
+      "patterns": [
+        "huh", "what do you mean", "can you explain", "not sure I get it", "please explain", "can you clarify"
+      ],
+      "responses": [
+        "Sure—which part is unclear?",
+        "Of course. Should I explain briefly or in detail?",
+        "Which part should I explain more?"
+      ]
+    },
+    {
+      "tag": "ask_name",
+      "patterns": [
+        "what's your name", "who are you", "your name", "how should I call you", "do you have a name"
+      ],
+      "responses": [
+        "I'm a little chat bot. Just call me 'Buddy' 🙂",
+        "Feel free to call me Buddy. And what's your name?"
+      ]
+    },
+    {
+      "tag": "tell_name",
+      "patterns": [
+        "my name is", "call me", "I'm", "you can call me"
+      ],
+      "responses": [
+        "Cool, nice to meet you!",
+        "Alright—I'll remember 😉",
+        "Hi! Nice to meet you."
+      ]
+    },
+    {
+      "tag": "compliment",
+      "patterns": [
+        "you're cool", "you're nice", "you're funny", "like you", "good bot", "smart bot", "well done", "good explanation"
+      ],
+      "responses": [
+        "Thanks, I appreciate it 🙌",
+        "Awww, thank you!",
+        "Glad to help—I'm doing my best."
+      ]
+    },
+    {
+      "tag": "insult",
+      "patterns": [
+        "you're dumb", "idiot", "shut up", "annoying", "stupid bot", "you suck", "are you stupid"
+      ],
+      "responses": [
+        "I'll stay friendly. What's really on your mind?",
+        "Okay—sounds like frustration. Want to talk about it?",
+        "If I can do better, let me know specifically."
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "tell a joke", "joke please", "make me laugh", "something funny"
+      ],
+      "responses": [
+        "What does a pirate do on the computer? — He presses the Enter key. 😅",
+        "I know lots of jokes—some are even good!",
+        "Humor is like a backpack: best when it's light."
+      ]
+    },
+    {
+      "tag": "ask_help",
+      "patterns": [
+        "can you help me", "help me", "need help", "I need help", "please help", "can you support", "how does this work", "can you explain this", "show me how"
+      ],
+      "responses": [
+        "Sure! What exactly do you need help with?",
+        "Of course. What's the first step that's tricky?",
+        "Let's tackle it step by step—where should we start?"
+      ]
+    },
+    {
+      "tag": "ask_capabilities",
+      "patterns": [
+        "what can you do", "what are you for", "what do you do", "what exactly can you do", "how can you help", "what are your skills"
+      ],
+      "responses": [
+        "I chat, ask questions, explain things simply & clearly, and help organize thoughts.",
+        "Small talk, short explanations, brainstorming—those are my strengths.",
+        "Just ask—I'll try to help understandably."
+      ]
+    },
+    {
+      "tag": "smalltalk_topic",
+      "patterns": [
+        "what do you like to do", "hobbies", "what music do you like", "music tips", "what movies do you like", "do you play games", "video games", "what do you watch", "podcasts", "books", "reading", "cinema", "series"
+      ],
+      "responses": [
+        "You first—what are you into right now (music, games, series)?",
+        "I'm curious: What's your secret tip?",
+        "Let's talk about your favorites—what's at the top?"
+      ]
+    },
+    {
+      "tag": "apology",
+      "patterns": [
+        "sorry", "my bad", "oops", "wasn't meant that way", "forgive me", "apologies"
+      ],
+      "responses": [
+        "All good. Shall we continue?",
+        "No worries—it happens. What's next?",
+        "It's okay. What's the next step?"
+      ]
+    },
+    {
+      "tag": "confirm",
+      "patterns": [
+        "yes", "okay", "ok", "sounds good", "do it", "go ahead", "let's go"
+      ],
+      "responses": [
+        "Alright 👍",
+        "Great, let's continue.",
+        "Okay—let's go."
+      ]
+    },
+    {
+      "tag": "deny",
+      "patterns": [
+        "no", "nope", "not really", "don't want to", "rather not", "not in the mood"
+      ],
+      "responses": [
+        "Alright. What would you prefer?",
+        "Okay, what works better for you?",
+        "No problem—how would you like it?"
+      ]
+    },
+    {
+      "tag": "repeat",
+      "patterns": [
+        "can you repeat that", "again please", "say that again", "repeat", "how was that", "explain again", "please repeat"
+      ],
+      "responses": [
+        "Sure. Which part exactly should I repeat?",
+        "Of course. In short: What do you want to focus on?",
+        "Okay—I'll say it again briefly."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [
+        "idk", "hmm", "don't know", "?", "no idea", "what do you mean", "please explain", "huh", "unclear", "doesn't fit", "what does that mean"
+      ],
+      "responses": [
+        "Tell me more…",
+        "Interesting—want to elaborate a bit?",
+        "Sounds interesting, give me some details!",
+        "I'm curious—what's it about exactly?"
+      ]
+    }
+  ]
+}
