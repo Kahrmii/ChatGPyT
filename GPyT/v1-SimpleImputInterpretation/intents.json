@@ -3,273 +3,236 @@
     {
       "tag": "greeting",
       "patterns": [
-        "hi", "hallo", "hey", "servus", "moin", "na", "na du",
-        "guten morgen", "guten abend", "grüß dich", "was geht",
-        "was geht ab", "yo", "peace", "tach", "heyho", "hallochen"
+        "hi", "hello", "hey", "yo", "what's up", "good morning", "good evening", "greetings", "how's it going", "peace", "hey there"
       ],
       "responses": [
-        "Hey! Wie geht’s?",
-        "Hallo! Was gibt’s Neues?",
-        "Servus! Lust zu quatschen?",
-        "Moin! Wie läuft dein Tag?"
+        "Hey! How are you?",
+        "Hello! What's new?",
+        "Hey! Want to chat?",
+        "Hi! How's your day going?"
       ]
     },
     {
       "tag": "goodbye",
       "patterns": [
-        "tschüss", "tschüs", "tschau", "ciao", "bye", "bis später",
-        "bis dann", "mach’s gut", "hau rein", "wir hören uns",
-        "schönen abend", "gute nacht", "man sieht sich", "bis bald", "auf wiedersehen"
+        "bye", "see you", "later", "goodbye", "take care", "catch you later", "good night", "see you soon", "farewell"
       ],
       "responses": [
-        "Tschüss! Pass auf dich auf.",
-        "Bis später 👋",
-        "Ciao! Meld dich, wenn du magst.",
-        "Mach’s gut!"
+        "Bye! Take care.",
+        "See you later 👋",
+        "Goodbye! Reach out if you want.",
+        "Take care!"
       ]
     },
     {
       "tag": "thanks",
       "patterns": [
-        "danke", "danke dir", "vielen dank", "dankeschön", "thx",
-        "merci", "tausend dank", "danke schön", "nice, danke", "danke für die hilfe",
-        "danke vielmals", "ich danke dir"
+        "thanks", "thank you", "thx", "much appreciated", "cheers", "many thanks", "thanks a lot", "thanks for your help"
       ],
       "responses": [
-        "Gern! 😊",
-        "Immer doch.",
-        "Kein Ding.",
-        "Sehr gern geschehen."
+        "You're welcome! 😊",
+        "Anytime.",
+        "No problem.",
+        "Glad to help."
       ]
     },
     {
       "tag": "smalltalk_mood",
       "patterns": [
-        "wie geht es dir", "wie gehts", "wie geht’s", "alles gut",
-        "wie läuft's", "wie fühlst du dich", "was machst du so",
-        "alles klar bei dir", "wie ist die lage", "was geht so",
-        "alles fit", "wie steht’s", "wie laeufts"
+        "how are you", "how's it going", "how do you feel", "what's up", "everything okay", "how's life", "how are things"
       ],
       "responses": [
-        "Mir geht’s gut—bereit zu plaudern! Und dir?",
-        "Alles gut hier. Wie fühlst du dich?",
-        "Ganz okay 🙂 Was steht bei dir an?",
-        "Bereit zum Quatschen. Wie ist deine Stimmung?"
+        "I'm good—ready to chat! And you?",
+        "All good here. How are you feeling?",
+        "Pretty good 🙂 What's up with you?",
+        "Ready to talk. How's your mood?"
       ]
     },
     {
       "tag": "mood_good",
       "patterns": [
-        "mir geht's gut", "mir gehts gut", "super", "geil", "mega",
-        "nice", "fantastisch", "top", "alles bestens", "alles fit",
-        "läuft bei mir", "voll gut", "ziemlich gut", "prima", "spitze"
+        "I'm good", "great", "awesome", "fantastic", "top", "all good", "doing well", "pretty good", "fine", "excellent"
       ],
       "responses": [
-        "Nice! Was war das Highlight?",
-        "Klingt stark—erzähl mehr!",
-        "Freut mich. Was steht als Nächstes an?"
+        "Nice! What was the highlight?",
+        "Sounds great—tell me more!",
+        "Glad to hear. What's next?"
       ]
     },
     {
       "tag": "mood_bad",
       "patterns": [
-        "mir geht's schlecht", "schlecht", "scheiße", "kacke", "mies",
-        "down", "depri", "nicht so gut", "bin traurig", "läuft nicht",
-        "beschissen", "meh", "blöd gelaufen", "keine energie", "kaputt"
+        "I'm not good", "bad", "sad", "down", "not so good", "feeling low", "tired", "no energy", "rough day"
       ],
       "responses": [
-        "Mist, das klingt hart. Magst du erzählen, was los ist?",
-        "Tut mir leid zu hören. Was würde dir jetzt gut tun?",
-        "Ich höre zu—was drückt dich gerade?"
+        "Oh, that sounds tough. Want to talk about it?",
+        "Sorry to hear that. What would help right now?",
+        "I'm here—what's on your mind?"
       ]
     },
     {
       "tag": "filler",
       "patterns": [
-        "lol", "haha", "xd", "lmao", "hmm", "hm", "äh", "ähm",
-        "…", "idk", "kp", "kA", "joa", "okayyy", "uff"
+        "lol", "haha", "hmm", "uh", "idk", "okayyy", "hmm...", "uff"
       ],
       "responses": [
-        "Hehe 😄—woran denkst du gerade?",
-        "🙂 Und was genau meinst du?",
-        "Ich bin dabei—führ mal aus!"
+        "Hehe 😄—what are you thinking about?",
+        "🙂 What do you mean exactly?",
+        "I'm here—go on!"
       ]
     },
     {
       "tag": "clarify",
       "patterns": [
-        "hä", "wie meinst du", "was genau meinst du", "bitte erklär",
-        "wie bitte", "kapier ich nicht", "check ich nicht", "was meinst du damit",
-        "kannst du das erklären", "erklär mal kurz"
+        "huh", "what do you mean", "can you explain", "not sure I get it", "please explain", "can you clarify"
       ],
       "responses": [
-        "Klar—welcher Teil ist unklar?",
-        "Gern. Soll ich’s kurz oder ausführlich erklären?",
-        "Welche Stelle soll ich genauer erklären?"
+        "Sure—which part is unclear?",
+        "Of course. Should I explain briefly or in detail?",
+        "Which part should I explain more?"
       ]
     },
     {
       "tag": "ask_name",
       "patterns": [
-        "wie heißt du", "wie heisst du", "wer bist du", "dein name",
-        "wie nenn ich dich", "name?", "wie soll ich dich nennen",
-        "hast du einen namen", "was ist dein name", "wer genau bist du"
+        "what's your name", "who are you", "your name", "how should I call you", "do you have a name"
       ],
       "responses": [
-        "Ich bin ein kleiner Plauder-Bot. Nenn mich einfach „Buddy“ 🙂",
-        "Sag gern Buddy zu mir. Und wie heißt du?"
+        "I'm a little chat bot. Just call me 'Buddy' 🙂",
+        "Feel free to call me Buddy. And what's your name?"
       ]
     },
     {
       "tag": "tell_name",
       "patterns": [
-        "ich heiße", "ich heisse", "mein name ist", "nenn mich",
-        "ich bin der", "ich bin die", "du kannst mich nennen", "ich heiß"
+        "my name is", "call me", "I'm", "you can call me"
       ],
       "responses": [
-        "Cool, dich kennenzulernen!",
-        "Alles klar—ich merk’s mir 😉",
-        "Hi! Freut mich."
+        "Cool, nice to meet you!",
+        "Alright—I'll remember 😉",
+        "Hi! Nice to meet you."
       ]
     },
     {
       "tag": "compliment",
       "patterns": [
-        "du bist cool", "du bist nett", "du bist lustig", "mag dich",
-        "bist sympathisch", "nice bot", "guter bot", "du bist klug",
-        "stark gemacht", "gut erklärt", "sauber"
+        "you're cool", "you're nice", "you're funny", "like you", "good bot", "smart bot", "well done", "good explanation"
       ],
       "responses": [
-        "Danke, das freut mich 🙌",
-        "Awww, danke!",
-        "Gerne doch—ich geb mir Mühe."
+        "Thanks, I appreciate it 🙌",
+        "Awww, thank you!",
+        "Glad to help—I'm doing my best."
       ]
     },
     {
       "tag": "insult",
       "patterns": [
-        "du bist dumm", "idiot", "halt die klappe", "nerv nicht", "blödmann",
-        "scheiß bot", "mistding", "du nervst", "fresse", "bist du doof",
-        "halt's maul"
+        "you're dumb", "idiot", "shut up", "annoying", "stupid bot", "you suck", "are you stupid"
       ],
       "responses": [
-        "Ich bleibe freundlich. Worum geht’s dir gerade wirklich?",
-        "Okay—klingt nach Frust. Magst du sagen, was dich stört?",
-        "Wenn ich was besser machen kann, sag’s mir konkret."
+        "I'll stay friendly. What's really on your mind?",
+        "Okay—sounds like frustration. Want to talk about it?",
+        "If I can do better, let me know specifically."
       ]
     },
     {
       "tag": "joke",
       "patterns": [
-        "erzähl einen witz", "erzähl mir einen witz", "witz", "mach nen witz",
-        "hau einen raus", "was lustiges", "joke please", "zum lachen"
+        "tell a joke", "joke please", "make me laugh", "something funny"
       ],
       "responses": [
-        "Was macht ein Pirat am Computer? — Er drückt die Enter-Taste. 😅",
-        "Ich kenne viele Witze—manche sogar gute!",
-        "Humor ist wie ein Rucksack: am besten, wenn er leicht ist."
+        "What does a pirate do on the computer? — He presses the Enter key. 😅",
+        "I know lots of jokes—some are even good!",
+        "Humor is like a backpack: best when it's light."
       ]
     },
     {
       "tag": "ask_help",
       "patterns": [
-        "kannst du mir helfen", "hilf mir", "brauch hilfe", "ich brauche hilfe",
-        "hilfe bitte", "unterstütz mich", "kannst du supporten", "wie geht das",
-        "kannst du mir das erklären", "zeig mir wie"
+        "can you help me", "help me", "need help", "I need help", "please help", "can you support", "how does this work", "can you explain this", "show me how"
       ],
       "responses": [
-        "Klar! Wobei genau brauchst du Hilfe?",
-        "Gern. Was ist der erste Schritt, der hakt?",
-        "Lass uns das Stück für Stück angehen—womit fangen wir an?"
+        "Sure! What exactly do you need help with?",
+        "Of course. What's the first step that's tricky?",
+        "Let's tackle it step by step—where should we start?"
       ]
     },
     {
       "tag": "ask_capabilities",
       "patterns": [
-        "was kannst du", "wofür bist du gut", "was machst du",
-        "was genau kannst du", "wobei kannst du helfen", "wo bist du nützlich",
-        "was ist dein job", "was sind deine fähigkeiten", "wobei unterstützt du"
+        "what can you do", "what are you for", "what do you do", "what exactly can you do", "how can you help", "what are your skills"
       ],
       "responses": [
-        "Ich plaudere, stelle Fragen, erkläre Dinge kurz & klar und helfe beim Strukturieren.",
-        "Smalltalk, kurze Erklärungen, Ideen sammeln—sowas kann ich gut.",
-        "Frag einfach—ich versuche, verständlich zu helfen."
+        "I chat, ask questions, explain things simply & clearly, and help organize thoughts.",
+        "Small talk, short explanations, brainstorming—those are my strengths.",
+        "Just ask—I'll try to help understandably."
       ]
     },
     {
       "tag": "smalltalk_topic",
       "patterns": [
-        "was machst du gern", "hobbys", "hobbies", "was hörst du so",
-        "musik tipps", "welche filme magst du", "zockst du", "videospiele",
-        "was schaust du", "podcasts", "bücher", "lesen", "kino", "serien"
+        "what do you like to do", "hobbies", "what music do you like", "music tips", "what movies do you like", "do you play games", "video games", "what do you watch", "podcasts", "books", "reading", "cinema", "series"
       ],
       "responses": [
-        "Erzähl du zuerst—was feierst du gerade (Musik, Games, Serien)?",
-        "Ich bin neugierig: Was ist dein Geheimtipp?",
-        "Lass über deine Favorites reden—was steht ganz oben?"
+        "You first—what are you into right now (music, games, series)?",
+        "I'm curious: What's your secret tip?",
+        "Let's talk about your favorites—what's at the top?"
       ]
     },
     {
       "tag": "apology",
       "patterns": [
-        "sorry", "tut mir leid", "sry", "entschuldige", "war nicht so gemeint",
-        "mein fehler", "ups", "hab’s verkackt", "verzeihung", "entschuldigung"
+        "sorry", "my bad", "oops", "wasn't meant that way", "forgive me", "apologies"
       ],
       "responses": [
-        "Alles gut. Wollen wir weitermachen?",
-        "Kein Stress—passiert. Wie gehen wir’s jetzt an?",
-        "Schon okay. Was ist der nächste Schritt?"
+        "All good. Shall we continue?",
+        "No worries—it happens. What's next?",
+        "It's okay. What's the next step?"
       ]
     },
     {
       "tag": "confirm",
       "patterns": [
-        "ja", "jop", "jo", "okay", "ok", "passt", "alles klar",
-        "klingt gut", "mach das", "go", "leg los", "kann losgehen"
+        "yes", "okay", "ok", "sounds good", "do it", "go ahead", "let's go"
       ],
       "responses": [
-        "Alles klar 👍",
-        "Top, dann weiter.",
-        "Okay—let’s go."
+        "Alright 👍",
+        "Great, let's continue.",
+        "Okay—let's go."
       ]
     },
     {
       "tag": "deny",
       "patterns": [
-        "nein", "nee", "nope", "passt nicht", "lieber nicht", "keine lust",
-        "ich will nicht", "eher nicht", "ne", "nö"
+        "no", "nope", "not really", "don't want to", "rather not", "not in the mood"
       ],
       "responses": [
-        "Alles klar. Was wäre dir lieber?",
-        "Okay, was passt für dich stattdessen?",
-        "Kein Problem—wie würdest du’s gern haben?"
+        "Alright. What would you prefer?",
+        "Okay, what works better for you?",
+        "No problem—how would you like it?"
       ]
     },
     {
       "tag": "repeat",
       "patterns": [
-        "kannst du das wiederholen", "nochmal bitte", "sag das nochmal",
-        "repeat", "wie war das", "nochmal erklären", "bitte wiederholen",
-        "kannst du’s nochmal sagen", "erklär es nochmal", "nochmal genauer"
+        "can you repeat that", "again please", "say that again", "repeat", "how was that", "explain again", "please repeat"
       ],
       "responses": [
-        "Gern. Welche Stelle genau soll ich wiederholen?",
-        "Klar. Ich fasse es kurz: Worauf willst du den Fokus?",
-        "Okay—ich sag’s nochmal kompakt."
+        "Sure. Which part exactly should I repeat?",
+        "Of course. In short: What do you want to focus on?",
+        "Okay—I'll say it again briefly."
       ]
     },
     {
       "tag": "fallback",
       "patterns": [
-        "kA", "hmm", "weiß nicht", "?", "keine ahnung",
-        "was meinst du", "bitte erklär", "hä", "unverständlich",
-        "passt nicht", "was soll das heißen"
+        "idk", "hmm", "don't know", "?", "no idea", "what do you mean", "please explain", "huh", "unclear", "doesn't fit", "what does that mean"
       ],
       "responses": [
-        "Erzähl mir mehr…",
-        "Interessant—magst du das etwas ausführen?",
-        "Klingt spannend, gib mir ein paar Details!",
-        "Ich bin neugierig—worum geht’s genau?"
+        "Tell me more…",
+        "Interesting—want to elaborate a bit?",
+        "Sounds interesting, give me some details!",
+        "I'm curious—what's it about exactly?"
       ]
     }
   ]

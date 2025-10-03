@@ -20,7 +20,12 @@ def tokenize(s: str):
 def bow_vector(tokens, stoi):
     v = torch.zeros(len(stoi), dtype=torch.float32)
     for tok in tokens:
-        v[stoi.get(tok, 0)] += 1.0
+        idx = stoi.get(tok)
+        if idx is not None:
+            v[idx] += 1.0
+    n = v.norm(p=2)
+    if n > 0:
+        v = v / n
     return v
 
 # Model
@@ -61,10 +66,10 @@ def respond(text: str, threshold: float = 0.25):  # try to play around with thre
         tag = "fallback"
     return random.choice(intents[tag]["responses"])
 
-print("Plauder-Bot (quit mit 'exit')")
+print("Chat-Bot (quit via 'exit')")
 while True:
     try:
-        msg = input("Du: ").strip()
+        msg = input("You: ").strip()
     except (EOFError, KeyboardInterrupt):
         print("\nBye!")
         break

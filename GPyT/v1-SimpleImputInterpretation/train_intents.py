@@ -35,7 +35,12 @@ def build_vocab(texts, min_freq=1, specials=["<unk>"]):
 def bow_vector(tokens, stoi):
     v = torch.zeros(len(stoi), dtype=torch.float32)
     for tok in tokens:
-        v[stoi.get(tok, 0)] += 1.0
+        idx = stoi.get(tok)
+        if idx is not None:
+            v[idx] += 1.0
+    n = v.norm(p=2)
+    if n > 0:
+        v = v / n
     return v
 
 # load data
@@ -46,12 +51,12 @@ samples, labels = [], []
 for it in intents:
     tag = it["tag"]
     if tag.lower() == "fallback":
-        continue  # nicht mittrainieren
+        continue 
     for p in it["patterns"]:
         samples.append(p)
         labels.append(tag)
 
-assert len(samples) > 0, "Keine Trainingsbeispiele gefunden. Prüfe intents.json"
+assert len(samples) > 0, "No training samples found."
 
 # Vocab + Vectors
 stoi, itos = build_vocab(samples, min_freq=1)
@@ -67,11 +72,11 @@ print("Class counts:", counts)
 min_per_class = min(counts.values())
 use_stratify = y if min_per_class >= 2 else None
 if use_stratify is None:
-    print("[Warnung] Mind. ein Intent hat <2 Beispiele – split ohne Stratify.")
+    print("[Warning] At least one intent has <2 examples - split without Stratify.")
 
 n_classes = len(counts)
 N = len(labels)
-test_size_abs = max(n_classes, math.ceil(0.2 * N))  # min. amount to have at least one per class
+test_size_abs = n_classes
 
 Xtr, Xva, ytr, yva = train_test_split(
     X, y,
@@ -105,7 +110,16 @@ def batchify(X, y, bs=16):
         yield X[j], y[j]
 
 best_va = 0.0
-for epoch in range(60):
+best_state = None
+no_improve = 0
+patience = 8             # stops after so many epochs without improvement
+max_epochs = 200         # can be large - Early-Stopping ends earlier
+
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+    opt, mode='max', factor=0.5, patience=3, min_lr=1e-5
+)
+
+for epoch in range(max_epochs):
     model.train()
     for xb, yb in batchify(Xtr, ytr, bs=16):
         xb = xb.to(device).float()
@@ -116,17 +130,34 @@ for epoch in range(60):
         loss.backward()
         opt.step()
 
+    # validation
     model.eval()
     with torch.no_grad():
         logits = model(Xva.to(device).float())
         preds = logits.argmax(1).cpu()
         acc = (preds == yva).float().mean().item()
-    if acc > best_va:
-        best_va = acc
-    if (epoch + 1) % 10 == 0:
-        print(f"Epoch {epoch+1:02d} | val acc: {acc:.2f}")
 
-# save
+    scheduler.step(acc)
+
+    improved = acc > best_va + 1e-4   # small tolerance
+    if improved:
+        best_va = acc
+        best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+        no_improve = 0
+    else:
+        no_improve += 1
+
+    if (epoch + 1) % 10 == 0 or improved:
+        print(f"Epoch {epoch+1:03d} | val acc: {acc:.3f} | best: {best_va:.3f} | no_improve: {no_improve}")
+
+    if no_improve >= patience:
+        print(f"Early stopping at epoch {epoch+1} (best val acc {best_va:.3f})")
+        break
+
+# breplay best state
+if best_state is not None:
+    model.load_state_dict(best_state)
+
 torch.save(model.state_dict(), "model.pth")
 torch.save(
     {"stoi": stoi, "itos": itos, "tag2id": tag2id, "id2tag": {v: k for k, v in tag2id.items()}},
