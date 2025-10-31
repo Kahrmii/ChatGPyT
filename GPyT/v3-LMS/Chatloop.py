@@ -9,7 +9,6 @@ from openai.types.chat import ChatCompletionMessageParam
 client = OpenAI(base_url="http://127.0.0.1:1234/v1", api_key="lm-studio")
 MODEL = "openai/gpt-oss-20b"
 
-
 class Spinner:
     def __init__(self, message: str = "Processing..."):
         self.spinner = itertools.cycle(["-", "/", "|", "\\"])
@@ -40,7 +39,6 @@ class Spinner:
         if self.thread:
             self.thread.join()
         self.write("\r")
-
 
 def chat_loop() -> None:
     messages: List[ChatCompletionMessageParam] = [
@@ -97,7 +95,5 @@ def chat_loop() -> None:
             )
             break
 
-
 if __name__ == "__main__":
     chat_loop()
-
