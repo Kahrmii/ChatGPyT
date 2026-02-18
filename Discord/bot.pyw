@@ -2,6 +2,7 @@ import logging
 import time
 from typing import Optional
 
+import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
@@ -118,6 +119,51 @@ async def stream_claude_response(interaction: discord.Interaction, user_message:
         history = get_history(user_id)
         if history and history[-1]["role"] == "user":
             history.pop()
+
+
+class N8nButton(discord.ui.Button["N8nView"]):
+    def __init__(self, label: str, webhook_url: str) -> None:
+        super().__init__(style=discord.ButtonStyle.primary, label=label)
+        self.webhook_url = webhook_url
+
+    async def callback(self, interaction: discord.Interaction) -> None:
+        await interaction.response.defer(ephemeral=True)
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(self.webhook_url) as resp:
+                    if resp.status < 400:
+                        await interaction.followup.send(
+                            f"**{self.label}** Webhook ausgelöst.", ephemeral=True
+                        )
+                    else:
+                        await interaction.followup.send(
+                            f"**{self.label}** Webhook fehlgeschlagen (Status {resp.status}).",
+                            ephemeral=True,
+                        )
+        except Exception as e:
+            logger.error(f"n8n webhook error for '{self.label}': {e}")
+            await interaction.followup.send(
+                f"**{self.label}** Webhook Fehler: Verbindung fehlgeschlagen.",
+                ephemeral=True,
+            )
+
+
+class N8nView(discord.ui.View):
+    def __init__(self) -> None:
+        super().__init__(timeout=None)
+        for btn in config.N8N_BUTTONS:
+            if btn["url"]:
+                self.add_item(N8nButton(label=btn["label"], webhook_url=btn["url"]))
+
+
+@bot.tree.command(name="n8n", description="n8n Webhooks auslösen")
+async def n8n(interaction: discord.Interaction) -> None:
+    embed = discord.Embed(
+        title="n8n Webhooks",
+        description="Klicke einen Button um den jeweiligen Webhook auszulösen.",
+        color=discord.Color.orange(),
+    )
+    await interaction.response.send_message(embed=embed, view=N8nView())
 
 
 @bot.tree.command(name="ask", description="Ask Claude a question")

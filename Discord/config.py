@@ -6,6 +6,11 @@ load_dotenv()
 DISCORD_TOKEN: str = os.getenv("DISCORD_TOKEN", "")
 ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
 
+N8N_BUTTONS: list[dict[str, str]] = [
+    {"label": "test", "url": os.getenv("N8N_WEBHOOK_TEST", "")},
+    {"label": "rm unwanted mods/devs", "url": os.getenv("N8N_WEBHOOK_RM_UNWANTED", "")},
+]
+
 DEFAULT_MODEL: str = "claude-sonnet-4-5-20250929"
 AVAILABLE_MODELS: list[str] = [
     "claude-sonnet-4-5-20250929",
