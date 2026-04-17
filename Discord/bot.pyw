@@ -16,6 +16,7 @@ from anthropic import (
 )
 
 import config
+from sentiment.predictor import SentimentPredictor
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("claude-bot")
@@ -25,6 +26,13 @@ user_system_prompts: dict[int, str] = {}
 user_models: dict[int, str] = {}
 
 anthropic_client = AsyncAnthropic(api_key=config.ANTHROPIC_API_KEY)
+
+try:
+    sentiment_predictor: SentimentPredictor | None = SentimentPredictor()
+    logger.info("Sentiment model loaded successfully.")
+except FileNotFoundError as _e:
+    sentiment_predictor = None
+    logger.warning(f"Sentiment model not available — run sentiment/train.py first: {_e}")
 
 
 def get_history(user_id: int) -> list[dict[str, str]]:
@@ -75,6 +83,7 @@ def handle_api_error(error: Exception) -> str:
 class ClaudeBot(commands.Bot):
     def __init__(self) -> None:
         intents = discord.Intents.default()
+        intents.message_content = True  # Required to read message text from channel history
         super().__init__(command_prefix="!", intents=intents)
 
     async def setup_hook(self) -> None:
@@ -215,6 +224,75 @@ async def model(interaction: discord.Interaction, model_name: app_commands.Choic
     await interaction.response.send_message(
         f"Model switched to **{model_name.name}**.", ephemeral=True
     )
+
+def _make_bar(ratio: float, length: int = 10) -> str:
+    filled = round(ratio * length)
+    return "█" * filled + "░" * (length - filled)
+
+
+@bot.tree.command(name="sentiment", description="Analyzes the sentiment of the last 100 messages in this channel")
+async def sentiment(interaction: discord.Interaction) -> None:
+    await interaction.response.defer()
+
+    if sentiment_predictor is None:
+        await interaction.followup.send(
+            "The sentiment model has not been trained yet.\n"
+            "Run the training script first:\n"
+            "```\npython -m sentiment.train --data your_data.csv\n```\n"
+            "See `sentiment/train.py` for details.",
+            ephemeral=True,
+        )
+        return
+
+    messages = [
+        msg
+        async for msg in interaction.channel.history(limit=100)
+        if not msg.author.bot and msg.content.strip()
+    ]
+
+    if not messages:
+        await interaction.followup.send("No messages found to analyze.", ephemeral=True)
+        return
+
+    texts = [msg.content for msg in messages]
+    predictions = sentiment_predictor.predict_batch(texts)
+
+    neg = predictions.count(0)
+    neu = predictions.count(1)
+    pos = predictions.count(2)
+    total = len(predictions)
+
+    neg_r, neu_r, pos_r = neg / total, neu / total, pos / total
+
+    if pos_r >= 0.5:
+        overall, emoji, color = "Positive", "😊", discord.Color.green()
+    elif neg_r >= 0.5:
+        overall, emoji, color = "Negative", "😟", discord.Color.red()
+    else:
+        overall, emoji, color = "Neutral", "😐", discord.Color.light_grey()
+
+    embed = discord.Embed(
+        title=f"📊 Sentiment Analysis ({total} messages)",
+        color=color,
+    )
+    embed.add_field(
+        name="🟢 Positive",
+        value=f"`{_make_bar(pos_r)}` {pos_r:.0%} ({pos})",
+        inline=False,
+    )
+    embed.add_field(
+        name="⚪ Neutral",
+        value=f"`{_make_bar(neu_r)}` {neu_r:.0%} ({neu})",
+        inline=False,
+    )
+    embed.add_field(
+        name="🔴 Negative",
+        value=f"`{_make_bar(neg_r)}` {neg_r:.0%} ({neg})",
+        inline=False,
+    )
+    embed.set_footer(text=f"Overall sentiment: {overall} {emoji}")
+    await interaction.followup.send(embed=embed)
+
 
 @bot.tree.error
 async def on_app_command_error(
